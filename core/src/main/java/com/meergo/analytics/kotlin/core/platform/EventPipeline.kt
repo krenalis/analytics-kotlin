@@ -55,8 +55,6 @@ open class EventPipeline(
 
         writeChannel = Channel(UNLIMITED)
         uploadChannel = Channel(UNLIMITED)
-
-        registerShutdownHook()
     }
 
     fun put(event: BaseEvent) {
@@ -205,14 +203,5 @@ open class EventPipeline(
         }
 
         return shouldCleanup
-    }
-
-    private fun registerShutdownHook() {
-        // close the stream if the app shuts down
-        Runtime.getRuntime().addShutdownHook(object : Thread() {
-            override fun run() {
-                this@EventPipeline.stop()
-            }
-        })
     }
 }
