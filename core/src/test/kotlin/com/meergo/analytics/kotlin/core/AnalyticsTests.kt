@@ -117,7 +117,7 @@ class AnalyticsTests {
             )
             val httpConnection: HttpURLConnection = mockk()
             val connection = object : Connection(httpConnection, settingsStream, null) {}
-            every { anyConstructed<HTTPClient>().settings("test.example.com/api/v1") } returns connection
+            every { anyConstructed<HTTPClient>().settings("test.example.com/v1") } returns connection
 
             val config = Configuration(
                 writeKey = "123",
@@ -1038,7 +1038,7 @@ class AsyncAnalyticsTests {
         )
         val httpConnection: HttpURLConnection = mockk()
         val connection = object : Connection(httpConnection, settingsStream, null) {}
-        every { anyConstructed<HTTPClient>().settings("test.example.com/api/v1") } answers {
+        every { anyConstructed<HTTPClient>().settings("test.example.com/v1") } answers {
             // suspend http calls until we tracked events
             // this will force events get into startup queue
             httpSemaphore.acquire()

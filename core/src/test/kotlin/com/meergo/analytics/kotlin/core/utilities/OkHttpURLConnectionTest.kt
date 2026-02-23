@@ -21,7 +21,7 @@ class OkHttpURLConnectionTest {
     private lateinit var mockCall: okhttp3.Call
     private lateinit var mockResponse: Response
     private lateinit var connection: OkHttpURLConnection
-    private val testUrl = URL("https://test.example.com/api/v1")
+    private val testUrl = URL("https://test.example.com/v1")
 
     @BeforeEach
     fun setup() {
