@@ -36,9 +36,9 @@ class HTTPClientTests {
     @Disabled
     @Test
     fun `upload connection has correct configuration`() {
-        httpClient.settings("test.example.com/api/v1").connection.let {
+        httpClient.settings("test.example.com/v1").connection.let {
             assertEquals(
-                "https://test.example.com/api/v1/settings/1vNgUqwJeCHmqgI9S1sOm9UHCyfYqbaQ",
+                "https://test.example.com/v1/settings/1vNgUqwJeCHmqgI9S1sOm9UHCyfYqbaQ",
                 it.url.toString()
             )
             assertEquals(
@@ -51,11 +51,11 @@ class HTTPClientTests {
     @Disabled
     @Test
     fun `settings connection has correct configuration`() {
-        httpClient.upload("test.example.com/api/v1").also {
+        httpClient.upload("test.example.com/v1").also {
             assertTrue(it.outputStream is GZIPOutputStream)
         }.connection.let {
             assertEquals(
-                "https://test.example.com/api/v1",
+                "https://test.example.com/v1",
                 it.url.toString()
             )
             assertEquals(
@@ -71,7 +71,7 @@ class HTTPClientTests {
 
     @Test
     fun `safeGetInputStream properly catches exception`() {
-        val connection = spyk(URL("https://test.example.com/api/v1").openConnection() as HttpURLConnection)
+        val connection = spyk(URL("https://test.example.com/v1").openConnection() as HttpURLConnection)
         every { connection.inputStream } throws IOException()
         val errorStream: InputStream? = safeGetInputStream(connection)
         assertEquals(connection.errorStream, errorStream)
@@ -80,7 +80,7 @@ class HTTPClientTests {
     @Disabled
     @Test
     fun `createPostConnection close`() {
-        val connection = spyk(httpClient.upload("test.example.com/api/v1"))
+        val connection = spyk(httpClient.upload("test.example.com/v1"))
         every { connection.connection.responseCode } returns 300
         every { connection.connection.inputStream } throws IOException()
         every { connection.connection.responseMessage } returns "test"
@@ -131,14 +131,14 @@ class HTTPClientTests {
             }
         })
 
-        httpClient.settings("test.example.com/api/v1").connection.let {
+        httpClient.settings("test.example.com/v1").connection.let {
             assertEquals(
                 "https://cdn.test.com",
                 it.url.toString()
             )
         }
 
-        httpClient.upload("test.example.com/api/v1").also {
+        httpClient.upload("test.example.com/v1").also {
             assertFalse(it.outputStream is GZIPOutputStream)
         }.connection.let {
             assertEquals(
@@ -161,7 +161,7 @@ class HTTPClientTests {
             }
         })
 
-        assertFalse(httpClient.upload("test.example.com/api/v1").outputStream is GZIPOutputStream)
+        assertFalse(httpClient.upload("test.example.com/v1").outputStream is GZIPOutputStream)
     }
 
     @Test
@@ -189,7 +189,7 @@ class HTTPClientTests {
         // Test that our actual Meergo endpoints use HTTP/2
         // Note: This is an integration test that makes a real request
         try {
-            val connection = httpClient.settings("test.example.com/api/v1").connection
+            val connection = httpClient.settings("test.example.com/v1").connection
             assertTrue(connection is OkHttpURLConnection,
                 "Settings connection should be OkHttpURLConnection")
 

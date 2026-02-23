@@ -46,7 +46,7 @@ class GZipCompressionTest {
         """.trimIndent()
 
         val requestFactory = RequestFactory()
-        val connection = requestFactory.openConnection("https://test.example.com/api/v1") as OkHttpURLConnection
+        val connection = requestFactory.openConnection("https://test.example.com/v1") as OkHttpURLConnection
 
         // Set up the connection for GZIP
         connection.setRequestProperty("Content-Type", "application/json")
@@ -96,7 +96,7 @@ class GZipCompressionTest {
         val originalData = ""
 
         val requestFactory = RequestFactory()
-        val connection = requestFactory.openConnection("https://test.example.com/api/v1") as OkHttpURLConnection
+        val connection = requestFactory.openConnection("https://test.example.com/v1") as OkHttpURLConnection
 
         connection.setRequestProperty("Content-Type", "application/json")
         connection.setRequestProperty("Content-Encoding", "gzip")
@@ -146,7 +146,7 @@ class GZipCompressionTest {
         }
 
         val requestFactory = RequestFactory()
-        val connection = requestFactory.openConnection("https://test.example.com/api/v1") as OkHttpURLConnection
+        val connection = requestFactory.openConnection("https://test.example.com/v1") as OkHttpURLConnection
 
         connection.setRequestProperty("Content-Type", "application/json")
         connection.setRequestProperty("Content-Encoding", "gzip")
@@ -199,7 +199,7 @@ class GZipCompressionTest {
 
         // Compress using OkHttpURLConnection with createPostConnection
         val requestFactory = RequestFactory()
-        val connection = requestFactory.openConnection("https://test.example.com/api/v1") as OkHttpURLConnection
+        val connection = requestFactory.openConnection("https://test.example.com/v1") as OkHttpURLConnection
 
         connection.setRequestProperty("Content-Type", "application/json")
         connection.setRequestProperty("Content-Encoding", "gzip")
@@ -241,7 +241,7 @@ class GZipCompressionTest {
         val testData = """{"test": "data"}"""
 
         val requestFactory = RequestFactory()
-        val connection = requestFactory.openConnection("https://test.example.com/api/v1") as OkHttpURLConnection
+        val connection = requestFactory.openConnection("https://test.example.com/v1") as OkHttpURLConnection
 
         connection.setRequestProperty("Content-Type", "application/json")
         // NO Content-Encoding header set
@@ -282,7 +282,7 @@ class GZipCompressionTest {
         """.trimIndent()
 
         val requestFactory = RequestFactory()
-        val connection = requestFactory.openConnection("https://test.example.com/api/v1") as OkHttpURLConnection
+        val connection = requestFactory.openConnection("https://test.example.com/v1") as OkHttpURLConnection
 
         connection.setRequestProperty("Content-Type", "application/json; charset=utf-8")
         connection.setRequestProperty("Content-Encoding", "gzip")
