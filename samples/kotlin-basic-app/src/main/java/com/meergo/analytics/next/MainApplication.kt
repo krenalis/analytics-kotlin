@@ -11,13 +11,13 @@ class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        analytics = Analytics("", applicationContext) {
-            this.endpoint = ""
-            this.collectDeviceId = true
-            this.trackApplicationLifecycleEvents = true
-            this.trackDeepLinks = true
-            this.flushAt = 1
-            this.flushInterval = 0
+        analytics = Analytics("WRITE_KEY", applicationContext) {
+            endpoint = "ENDPOINT"
+            collectDeviceId = true
+            trackApplicationLifecycleEvents = true
+            trackDeepLinks = true
+            flushAt = 1
+            flushInterval = 0
         }
     }
 }
