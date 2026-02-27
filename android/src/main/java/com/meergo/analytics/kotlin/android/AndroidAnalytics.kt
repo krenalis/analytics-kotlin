@@ -52,12 +52,20 @@ public fun Analytics(
 ): Analytics {
     Analytics.setLogger(AndroidLogger())
     require(writeKey.isNotBlank()) { "writeKey cannot be blank " }
+
     val conf = Configuration(
         writeKey = writeKey,
         application = context,
         storageProvider = AndroidStorageProvider
     )
+
     configs.invoke(conf)
+
+    conf.endpoint = conf.endpoint
+        .trim()
+        .removePrefix("https://")
+        .removePrefix("http://")
+
     return Analytics(conf).apply {
         startup()
     }
