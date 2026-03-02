@@ -4,7 +4,7 @@ This document provides information useful for contributing to the Meergo Kotlin 
 
 ## Testing the SDK
 
-At the moment, the SDK can only be tested through the [GitHub Action workflow](https://github.com/meergo/analytics-kotlin/actions/workflows/build.yml).
+At the moment, the SDK can only be tested through the [GitHub Action workflow](https://github.com/meergo/analytics-kotlin/actions/workflows/run-tests.yml).
 Local tests are currently not supported.
 
 ## Running the sample application
