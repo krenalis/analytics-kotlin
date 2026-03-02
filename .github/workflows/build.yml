@@ -78,7 +78,7 @@ jobs:
         run: |
           if [ "${{ inputs.logLevel }}" == "stacktrace" ]; then
             ./gradlew android:test --stacktrace
-          elif [ "${{ inputs.logLewvel }}" == "debug" ]; then
+          elif [ "${{ inputs.logLevel }}" == "debug" ]; then
             ./gradlew android:test --debug
           elif [ "${{ inputs.logLevel }}" == "scan" ]; then
             ./gradlew android:test --scan
