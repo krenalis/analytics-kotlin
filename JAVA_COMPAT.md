@@ -12,7 +12,7 @@ NOTE: This document serves as an explanation of usage of this `analytics-kotlin`
 
 ## Installation
 
-To integrate the Android SDK inside your application, add the dependency to your `build.gradle`. Make sure to replace `<latest_version>` with the latest version of the SDK.
+To integrate the Kotlin SDK inside your application, add the dependency to your `build.gradle`. Make sure to replace `<latest_version>` with the latest version of the SDK.
 
 ```java
 repositories {
