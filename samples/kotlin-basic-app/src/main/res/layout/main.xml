@@ -45,7 +45,7 @@
         android:id="@+id/clickButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Track &quot;button clicked&quot;"
+        android:text="Track &quot;Workout completed&quot;"
         app:layout_constraintTop_toBottomOf="@id/eventText"/>
 
     <Button

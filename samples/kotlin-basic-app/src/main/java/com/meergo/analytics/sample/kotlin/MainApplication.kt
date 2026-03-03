@@ -1,4 +1,4 @@
-package com.meergo.analytics.next
+package com.meergo.analytics.sample.kotlin
 
 import android.app.Application
 import com.meergo.analytics.kotlin.android.Analytics

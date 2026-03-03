@@ -1,11 +1,11 @@
-package com.meergo.analytics.next
+package com.meergo.analytics.sample.kotlin
 
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.meergo.analytics.kotlin.core.Analytics
-import com.meergo.analytics.kotlin.core.utilities.toJsonElement
 import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.put
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,22 +29,30 @@ class MainActivity : AppCompatActivity() {
 
         val clickButton: Button = findViewById(R.id.clickButton)
         clickButton.setOnClickListener {
-            analytics.track("button clicked")
+            analytics.track(
+                "Workout completed", 
+                buildJsonObject { 
+                    put("workout_type", "Cardio");
+                    put("duration_minutes", 45);
+                    put("calories_burned", 380);
+                    put("device", "Smartwatch")
+                },
+            )
         }
 
         val identifyButton: Button = findViewById(R.id.identifyButton)
         identifyButton.setOnClickListener {
-            analytics.identify("user1234", buildJsonObject { put("Name", "Jhon".toJsonElement()) })
+            analytics.identify("user1234", buildJsonObject { put("Name", "Jhon") })
         }
 
         val identifyWithEmailButton: Button = findViewById(R.id.identifyWithEmailButton)
         identifyWithEmailButton.setOnClickListener {
-            analytics.identify("", buildJsonObject { put("Email", "user1234@example.com".toJsonElement()) })
+            analytics.identify("", buildJsonObject { put("Email", "user1234@example.com") })
         }
 
         val identifyWithAgeButton: Button = findViewById(R.id.identifyWithAgeButton)
         identifyWithAgeButton.setOnClickListener {
-            analytics.identify("", buildJsonObject { put("Age", "35".toJsonElement()) })
+            analytics.identify("", buildJsonObject { put("Age", "35") })
         }
 
         val resetButton: Button = findViewById(R.id.resetButton)
