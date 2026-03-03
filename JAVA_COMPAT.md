@@ -33,17 +33,28 @@ Add the required permissions to `AndroidManifest.xml` (if they are not yet prese
 ## Using the SDK
 
 ```Java
-AndroidAnalytics client = AndroidAnalyticsKt.Analytics(BuildConfig.YOUR_WRITE_KEY, getApplicationContext(), configuration -> {
-  configuration.setEndpoint(BuildConfig.YOUR_ENDPOINT);
-  configuration.setFlushAt(1);
-  configuration.setCollectDeviceId(true);
+import com.meergo.analytics.kotlin.core.Analytics;
+import com.meergo.analytics.kotlin.android.AndroidAnalyticsKt;
+import com.meergo.analytics.kotlin.core.compat.JavaAnalytics;
+import kotlin.Unit;
+
+Analytics client = AndroidAnalyticsKt.Analytics("YOUR_WRITE_KEY", getApplicationContext(), configuration -> {
+  configuration.setEndpoint("YOUR_ENDPOINT");
   configuration.setTrackApplicationLifecycleEvents(true);
-  configuration.setTrackDeepLinks(true);
-  //...other config options
+  configuration.setFlushAt(3);
+  configuration.setFlushInterval(10);
+  // ...other config options
   return Unit.INSTANCE;
 });
 
 JavaAnalytics analyticsCompat = new JavaAnalytics(client);
+
+Map<String, Object> properties = new HashMap<>();
+properties.put("workout_type", "Cardio");
+properties.put("duration_minutes", 45);
+properties.put("calories_burned", 380);
+properties.put("device", "Smartwatch");
+analyticsCompat.track("Workout completed", properties);
 ```
 
 ## Sending events
