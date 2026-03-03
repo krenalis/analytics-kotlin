@@ -16,7 +16,7 @@ The Meergo Kotlin SDK lets you send customer event data from your Android applic
 
 ## Installation
 
-To integrate the Android SDK inside your application, add the dependency to your `build.gradle`. Make sure to replace `<latest_version>` with the latest version of the SDK.
+To integrate the Kotlin SDK inside your application, add the dependency to your `build.gradle`. Make sure to replace `<latest_version>` with the latest version of the SDK.
 
 ```kotlin
 repositories {
@@ -38,7 +38,8 @@ Add the required permissions to `AndroidManifest.xml` (if they are not yet prese
 
 ```kotlin
 import com.meergo.analytics.kotlin.android.Analytics
-import com.meergo.analytics.kotlin.core.*
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.put
 
 val client = Analytics("YOUR_WRITE_KEY", applicationContext) {
   endpoint = "YOUR_ENDPOINT"
@@ -47,6 +48,16 @@ val client = Analytics("YOUR_WRITE_KEY", applicationContext) {
   flushInterval = 10
   // ...other config options
 }
+
+client.track(
+  "Workout completed", 
+  buildJsonObject { 
+    put("workout_type", "Cardio");
+    put("duration_minutes", 45);
+    put("calories_burned", 380);
+    put("device", "Smartwatch")
+  },
+)
 ```
 
 ## Sending events
