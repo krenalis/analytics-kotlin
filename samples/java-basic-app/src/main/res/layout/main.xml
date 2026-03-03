@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:padding="30dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Java Sample"
+        android:id="@+id/headerText"
+        android:textStyle="bold"
+        android:textSize="23dp"/>
+
+    <Button
+        android:id="@+id/trackButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Track &quot;Workout completed&quot;"
+        app:layout_constraintTop_toBottomOf="@id/headerText"/>
+
+    <Button
+        android:id="@+id/identifyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Identify user &quot;user1234&quot;"
+        app:layout_constraintTop_toBottomOf="@id/trackButton"/>
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        app:layout_constraintTop_toBottomOf="@id/identifyButton"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/red_600"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
