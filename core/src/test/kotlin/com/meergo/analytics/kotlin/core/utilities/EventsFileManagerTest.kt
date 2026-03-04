@@ -117,9 +117,9 @@ internal class EventsFileManagerTest{
         val eventString = EncodeDefaultsJson.encodeToString(trackEvent)
         file.storeEvent(eventString)
         // artificially add 500kb of data to file
-        FileOutputStream(File(directory, "123-0.tmp"), true).write(
-            "A".repeat(475_000).toByteArray()
-        )
+        FileOutputStream(File(directory, "123-0.tmp"), true).use {
+            it.write("A".repeat(475_000).toByteArray())
+        }
 
         file.storeEvent(eventString)
         assertFalse(File(directory, "123-0.tmp").exists())

@@ -239,7 +239,7 @@ internal class StorageImplTest {
             val fileUrl = storage.read(Storage.Constants.Events)
             assertNotNull(fileUrl)
             fileUrl!!.let {
-                val contentsStr = File(it).inputStream().readBytes().toString(Charsets.UTF_8)
+                val contentsStr = File(it).readText()
                 val contentsJson: JsonObject = Json.decodeFromString(contentsStr)
                 assertEquals(3, contentsJson.size) // batch, sentAt, writeKey
                 assertTrue(contentsJson.containsKey("batch"))
@@ -292,7 +292,7 @@ internal class StorageImplTest {
             val fileUrl = storage.read(Storage.Constants.Events)
             assertNotNull(fileUrl)
             fileUrl!!.let {
-                val contentsStr = File(it).inputStream().readBytes().toString(Charsets.UTF_8)
+                val contentsStr = File(it).readText()
                 val contentsJson: JsonObject = Json.decodeFromString(contentsStr)
                 assertEquals(3, contentsJson.size) // batch, sentAt, writeKey
                 assertTrue(contentsJson.containsKey("batch"))

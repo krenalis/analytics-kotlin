@@ -248,7 +248,7 @@ class StorageTests {
                 val fileUrl = androidStorage.read(Storage.Constants.Events)
                 assertNotNull(fileUrl)
                 fileUrl!!.let {
-                    val contentsStr = File(it).inputStream().readBytes().toString(Charsets.UTF_8)
+                    val contentsStr = File(it).readText()
                     val contentsJson: JsonObject = Json.decodeFromString(contentsStr)
                     assertEquals(3, contentsJson.size)
                     assertTrue(contentsJson.containsKey("batch"))
@@ -302,7 +302,7 @@ class StorageTests {
                 val fileUrl = androidStorage.read(Storage.Constants.Events)
                 assertNotNull(fileUrl)
                 fileUrl!!.let {
-                    val contentsStr = File(it).inputStream().readBytes().toString(Charsets.UTF_8)
+                    val contentsStr = File(it).readText()
                     val contentsJson: JsonObject = Json.decodeFromString(contentsStr)
                     assertEquals(3, contentsJson.size)
                     assertTrue(contentsJson.containsKey("batch"))
