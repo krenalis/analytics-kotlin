@@ -44,8 +44,6 @@ class EventsFileManager(
 
     private val fileIndexKey = if(subject == null) "meergo.events.file.index.$writeKey" else "meergo.events.file.index.$writeKey.$subject"
 
-    private var os: FileOutputStream? = null
-
     private var curFile: File? = null
 
     private val semaphore = Semaphore(1)
@@ -138,7 +136,6 @@ class EventsFileManager(
         val contents = """],"sentAt":"${MeergoInstant.now()}","writeKey":"$writeKey"}"""
         writeToFile(contents.toByteArray(), file)
         file.renameTo(File(directory, file.nameWithoutExtension))
-        os?.close()
         incrementFileIndex()
         reset()
     }
@@ -156,15 +153,13 @@ class EventsFileManager(
     // Atomic write to underlying file
     // TODO make atomic
     private fun writeToFile(content: ByteArray, file: File) {
-        os = os ?: FileOutputStream(file, true)
-        os?.run {
-            write(content)
-            flush()
+        FileOutputStream(file, true).use {
+            it.write(content)
+            it.flush()
         }
     }
 
     private fun reset() {
-        os = null
         curFile = null
     }
 
