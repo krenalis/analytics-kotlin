@@ -24,7 +24,7 @@ class StorageImpl(
     subject: String? = null
 ) : Subscriber, Storage {
 
-    override val storageDirectory = File(directory ?: "/tmp/analytics-kotlin/$writeKey")
+    override val storageDirectory = File(directory ?: "${java.lang.System.getProperty("java.io.tmpdir")}/analytics-kotlin/$writeKey")
     private val storageDirectoryEvents = File(storageDirectory, "events")
 
     internal val propertiesFile = PropertiesFile(storageDirectory, writeKey)

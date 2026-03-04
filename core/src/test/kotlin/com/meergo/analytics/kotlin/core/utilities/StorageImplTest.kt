@@ -167,12 +167,13 @@ internal class StorageImplTest {
             store,
             "123",
             UnconfinedTestDispatcher(),
-            "/tmp/test"
+            File(java.lang.System.getProperty("java.io.tmpdir"), "analytics-test-custom").path
         )
 
-        assertEquals("/tmp/test", storage.storageDirectory.path)
-        assertTrue(storage.eventsFile.directory.path.contains("/tmp/test"))
-        assertTrue(storage.propertiesFile.directory.path.contains("/tmp/test"))
+        val customDir = File(java.lang.System.getProperty("java.io.tmpdir"), "analytics-test-custom").path
+        assertEquals(customDir, storage.storageDirectory.path)
+        assertTrue(storage.eventsFile.directory.path.contains(customDir))
+        assertTrue(storage.propertiesFile.directory.path.contains(customDir))
         assertTrue(storage.storageDirectory.exists())
         assertTrue(storage.eventsFile.directory.exists())
         assertTrue(storage.propertiesFile.directory.exists())

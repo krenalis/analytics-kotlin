@@ -8,7 +8,7 @@ import java.io.File
 
 internal class PropertiesFileTest {
 
-    private val directory = File("/tmp/analytics-test/123")
+    private val directory = File(java.lang.System.getProperty("java.io.tmpdir"), "analytics-test/123")
     private val kvStore = PropertiesFile(directory, "123")
 
     @BeforeEach

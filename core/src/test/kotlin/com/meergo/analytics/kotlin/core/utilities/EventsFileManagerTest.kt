@@ -21,7 +21,7 @@ import java.util.Date
 
 internal class EventsFileManagerTest{
     private val epochTimestamp = Date(0).toInstant().toString()
-    private val directory = File("/tmp/analytics-android-test/events")
+    private val directory = File(java.lang.System.getProperty("java.io.tmpdir"), "analytics-android-test/events")
     private val kvStore = PropertiesFile(directory.parentFile, "123")
 
     init {
@@ -220,8 +220,8 @@ internal class EventsFileManagerTest{
         file1.rollover()
         file2.rollover()
 
-        assertEquals(listOf("/tmp/analytics-android-test/events/123-0"), file1.read())
-        assertEquals(listOf("/tmp/analytics-android-test/events/qwerty-0"), file2.read())
+        assertEquals(listOf(File(directory, "123-0").path), file1.read())
+        assertEquals(listOf(File(directory, "qwerty-0").path), file2.read())
     }
 
     @Test

@@ -29,7 +29,7 @@ class EventsFileTests {
     private val epochTimestamp = Date(0).toInstant().toString()
     private val sharedPreferences = MemorySharedPreferences()
     private val kvStore = AndroidKVS(sharedPreferences)
-    private val directory = File("/tmp/analytics-android-test/")
+    private val directory = File(System.getProperty("java.io.tmpdir"), "analytics-android-test")
 
     init {
         mockkObject(MeergoInstant)
@@ -210,8 +210,8 @@ class EventsFileTests {
         file1.rollover()
         file2.rollover()
 
-        assertEquals(listOf("/tmp/analytics-android-test/123-0"), file1.read())
-        assertEquals(listOf("/tmp/analytics-android-test/qwerty-0"), file2.read())
+        assertEquals(listOf(File(directory, "123-0").path), file1.read())
+        assertEquals(listOf(File(directory, "qwerty-0").path), file2.read())
     }
 
 //    @Test

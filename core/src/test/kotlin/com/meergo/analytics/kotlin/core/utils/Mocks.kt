@@ -32,7 +32,7 @@ fun testAnalytics(configuration: Configuration, testScope: TestScope, testDispat
 }
 
 fun clearPersistentStorage(writeKey: String = "123") {
-    File("/tmp/analytics-kotlin/$writeKey").deleteRecursively()
+    File(java.lang.System.getProperty("java.io.tmpdir"), "analytics-kotlin/$writeKey").deleteRecursively()
 }
 
 fun spyStore(scope: TestScope, dispatcher: TestDispatcher): Store {

@@ -43,7 +43,7 @@ fun mockContext(): Context {
     every { mockPkgMgr.getPackageInfo("com.foo", 0) } returns packageInfo
     val mock = mockk<Context> {
         every { getSharedPreferences(any(), any()) } returns mockPrefs
-        every { getDir(any(), any()) } returns File("/tmp/analytics-android-test/")
+        every { getDir(any(), any()) } returns File(java.lang.System.getProperty("java.io.tmpdir"), "analytics-android-test")
         every { packageName } returns "com.foo"
         every { packageManager } returns mockPkgMgr
     }
@@ -51,7 +51,7 @@ fun mockContext(): Context {
 }
 
 fun clearPersistentStorage() {
-    File("/tmp/analytics-android-test/").deleteRecursively()
+    File(java.lang.System.getProperty("java.io.tmpdir"), "analytics-android-test").deleteRecursively()
 }
 
 fun spyStore(scope: CoroutineScope, dispatcher: CoroutineDispatcher): Store {
