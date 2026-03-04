@@ -66,6 +66,7 @@ Refer to the Meergo events documentation for more information on the supported e
 
 ## Compatibility
 
+* The SDK requires **JVM 8** or higher.
 * If you use pure Java codebase, please refer to [Java Compatibility](JAVA_COMPAT.md) for sample usages.
 
 ## License
