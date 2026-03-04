@@ -2,10 +2,34 @@
 
 This document provides information useful for contributing to the Meergo Kotlin SDK.
 
+## Prerequisites
+
+- **JDK 11** (recommended) or any JDK version from 8 to 16.
+
+> **Why not JDK 17+?**
+> The test suite uses MockK 1.10.6 which has compatibility issues with newer JVMs, causing test failures. JDK 11 is the recommended choice as it is a widely supported LTS release.
+
+To verify your JDK version:
+
+```bash
+java -version
+```
+
+If you have multiple JDK versions installed, you can set `JAVA_HOME` before running Gradle:
+
+```bash
+export JAVA_HOME=/path/to/jdk-11
+```
+
+If you use **Android Studio**, make sure the Gradle JDK is set to JDK 11: **File > Settings > Build, Execution, Deployment > Build Tools > Gradle > Gradle JDK**.
+
 ## Testing the SDK
 
-At the moment, the SDK can only be tested through the [GitHub Action workflow](https://github.com/meergo/analytics-kotlin/actions/workflows/run-tests.yml).
-Local tests are currently not supported.
+Tests can be run locally on Linux and Windows:
+
+```bash
+./gradlew core:test android:test
+```
 
 ## Running the sample application
 
