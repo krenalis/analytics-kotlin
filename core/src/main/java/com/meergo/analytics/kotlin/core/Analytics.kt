@@ -158,7 +158,7 @@ open class Analytics protected constructor(
                 storage.subscribeToStore()
             }
 
-            if (configuration.autoAddMeergoDestination && configuration.autoAddMeergoDestination) {
+            if (configuration.autoAddMeergoDestination && configuration.autoAddSegmentDestination) {
                 add(MeergoDestination())
             }
 
