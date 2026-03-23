@@ -52,7 +52,7 @@ To run the sample application locally:
    Additional emulator configuration is required when sending events to a local Meergo instance running on HTTPS via self-signed certificates.
    See [Using self-signed SSL certificates with mkcert](#using-self-signed-ssl-certificates-with-mkcert).
 
-4. Build and run the application from Android Studio.
+4. Build and run the application from Android Studio on the Android Virtual Device.
 
 5. Interact with the buttons inside the application running in the emulator. You should see new logged events in the event debugger of the Meergo Android source.
 
