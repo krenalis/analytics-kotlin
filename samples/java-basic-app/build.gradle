@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         multiDexEnabled true
-        applicationId "com.meergo.analytics.sample.java"
+        applicationId "com.krenalis.analytics.sample.java"
         minSdkVersion 19
         targetSdkVersion 33
         versionCode 1

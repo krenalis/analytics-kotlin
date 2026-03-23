@@ -1,12 +1,12 @@
-# Meergo Kotlin SDK Java Compatibility 
+# Krenalis Kotlin SDK Java Compatibility 
 
-The Meergo Kotlin SDK lets you send customer event data from your Android applications to your specified destinations.
+The Krenalis Kotlin SDK lets you send customer event data from your Android applications to your specified destinations.
 
 NOTE: This document serves as an explanation of usage of this `analytics-kotlin` library for pure Java codebase. For the sample usages in Kotlin, please refer to our main [README.md doc](README.md).
 
 ## SDK setup requirements
 
-- Set up a Meergo account.
+- Set up a Krenalis account.
 - Set up an Android source in the dashboard.
 - Copy the write key and the endpoint.
 
@@ -19,7 +19,7 @@ repositories {
   mavenCentral()
 }
 dependencies {
-  implementation 'com.meergo.analytics.kotlin:android:<latest_version>'
+  implementation 'com.krenalis.analytics.kotlin:android:<latest_version>'
 }
 ```
 
@@ -33,9 +33,9 @@ Add the required permissions to `AndroidManifest.xml` (if they are not yet prese
 ## Using the SDK
 
 ```Java
-import com.meergo.analytics.kotlin.core.Analytics;
-import com.meergo.analytics.kotlin.android.AndroidAnalyticsKt;
-import com.meergo.analytics.kotlin.core.compat.JavaAnalytics;
+import com.krenalis.analytics.kotlin.core.Analytics;
+import com.krenalis.analytics.kotlin.android.AndroidAnalyticsKt;
+import com.krenalis.analytics.kotlin.core.compat.JavaAnalytics;
 import kotlin.Unit;
 
 Analytics client = AndroidAnalyticsKt.Analytics("YOUR_WRITE_KEY", getApplicationContext(), configuration -> {
@@ -59,7 +59,7 @@ analyticsCompat.track("Workout completed", properties);
 
 ## Sending events
 
-Refer to the Meergo events documentation for more information on the supported event types.
+Refer to the Krenalis events documentation for more information on the supported event types.
 
 ## License
 ```

@@ -1,6 +1,6 @@
 # Contributing
 
-This document provides information useful for contributing to the Meergo Kotlin SDK.
+This document provides information useful for contributing to the Krenalis Kotlin SDK.
 
 ## Prerequisites
 
@@ -39,28 +39,28 @@ To run the sample application locally:
 
 2. Create and configure an [Android Virtual Device (AVD)](https://developer.android.com/studio/run/managing-avds), if you did not already create one during the Android Studio installation process.
 
-3. Open `MainApplication.kt` and replace `WRITE_KEY` and `ENDPOINT` with the values from your Meergo Android source.
+3. Open `MainApplication.kt` and replace `WRITE_KEY` and `ENDPOINT` with the values from your Krenalis Android source.
 
    **Note**:
-   If you want to send events to a local Meergo instance running on your development machine, you must replace `localhost` or `127.0.0.1` in the endpoint URL with `10.0.2.2`.
+   If you want to send events to a local Krenalis instance running on your development machine, you must replace `localhost` or `127.0.0.1` in the endpoint URL with `10.0.2.2`.
 
    This is required because the Android Emulator treats `localhost` as the emulator itself. Using `10.0.2.2` allows the emulator to reach services running on your host machine.
 
    For more information, see the Android documentation on [emulator networking](https://developer.android.com/studio/run/emulator-networking).
 
    **Using HTTPS locally?**
-   Additional emulator configuration is required when sending events to a local Meergo instance running on HTTPS via self-signed certificates.
+   Additional emulator configuration is required when sending events to a local Krenalis instance running on HTTPS via self-signed certificates.
    See [Using self-signed SSL certificates with mkcert](#using-self-signed-ssl-certificates-with-mkcert).
 
 4. Build and run the application from Android Studio on the Android Virtual Device.
 
-5. Interact with the buttons inside the application running in the emulator. You should see new logged events in the event debugger of the Meergo Android source.
+5. Interact with the buttons inside the application running in the emulator. You should see new logged events in the event debugger of the Krenalis Android source.
 
 ### Using self-signed SSL certificates with mkcert
 
-If your local Meergo instance runs over **HTTPS** using mkcert self-signed SSL certificates, additional configuration is required for the Android Emulator, since the emulator will not trust the certificates by default:
+If your local Krenalis instance runs over **HTTPS** using mkcert self-signed SSL certificates, additional configuration is required for the Android Emulator, since the emulator will not trust the certificates by default:
 
-* Ensure the self-signed certificate generated for running Meergo is valid for **both** `localhost` and `10.0.2.2`.
+* Ensure the self-signed certificate generated for running Krenalis is valid for **both** `localhost` and `10.0.2.2`.
 * Install the **mkcert CA certificate** inside the emulator so Android trusts it:
 
    1. Locate the mkcert CA file (`rootCA.pem`) on your machine:
@@ -81,4 +81,4 @@ If your local Meergo instance runs over **HTTPS** using mkcert self-signed SSL c
 
    5. Select the `rootCA.crt` file from the file explorer of the emulator.
 
-After installation, the CA should appear under **Settings → Security & privacy → More security & privacy → Encryption & credentials → Trusted credentials → User**, and your local HTTPS Meergo instance should now be trusted by the emulator.
+After installation, the CA should appear under **Settings → Security & privacy → More security & privacy → Encryption & credentials → Trusted credentials → User**, and your local HTTPS Krenalis instance should now be trusted by the emulator.

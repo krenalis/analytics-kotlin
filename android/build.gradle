@@ -20,8 +20,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
-        buildConfigField("int", "MEERGO_VERSION_CODE", "${versionCode}")
-        buildConfigField("String", "MEERGO_VERSION_NAME", "\"${versionName}\"")
+        buildConfigField("int", "KRENALIS_VERSION_CODE", "${versionCode}")
+        buildConfigField("String", "KRENALIS_VERSION_NAME", "\"${versionName}\"")
     }
 
     buildTypes {

@@ -7,10 +7,10 @@
 }
 
 # These rules will ensure that our generated serializers dont get obfuscated
--keep,includedescriptorclasses class com.meergo.analytics.kotlin.**$$serializer { *; }
--keepclassmembers class com.meergo.analytics.kotlin.** {
+-keep,includedescriptorclasses class com.krenalis.analytics.kotlin.**$$serializer { *; }
+-keepclassmembers class com.krenalis.analytics.kotlin.** {
     *** Companion;
 }
--keepclasseswithmembers class com.meergo.analytics.kotlin.** {
+-keepclasseswithmembers class com.krenalis.analytics.kotlin.** {
     kotlinx.serialization.KSerializer serializer(...);
 }
