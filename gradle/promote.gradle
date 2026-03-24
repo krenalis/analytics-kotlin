@@ -23,13 +23,9 @@ if (!hasProperty("signing.keyId")) {
 
 nexusPublishing {
     repositories {
-        /*
-            nexus publish plugin by default looking for the following as credential:
-                * sonatypeUsername and sonatypePassword in global gradle property or
-                * ORG_GRADLE_PROJECT_sonatypeUsername and ORG_GRADLE_PROJECT_sonatypePassword
-                  in system environments
-            be sure to set the variable names exactly as above.
-         */
-        sonatype()
+        sonatype {
+            nexusUrl.set(uri("https://ossrh-staging-api.central.sonatype.com/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://central.sonatype.com/repository/maven-snapshots/"))
+        }
     }
 }
