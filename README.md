@@ -1,10 +1,4 @@
-# Krenalis Kotlin SDK (🚧 work in progress) 
-
----
-
-## 🚨 Important note. 🚧 Please note that this SDK is still under development, has not been released, and is therefore not yet usable. Therefore, the commands and documentation provided here may not work or may be changed without notice. Stay tuned for updates. 👀
-
----
+# Krenalis Kotlin SDK
 
 The Krenalis Kotlin SDK lets you send customer event data from your Android applications to your specified destinations.
 
