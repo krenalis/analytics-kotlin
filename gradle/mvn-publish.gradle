@@ -14,7 +14,7 @@ publishing {
                 artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
             }
             else {
-                artifact("$buildDir/libs/${project.getName()}-${version}.jar")
+                artifact(jar)
             }
             artifact sourcesJar
             artifact javadocJar
@@ -85,3 +85,11 @@ signing {
 publish.dependsOn build
 publishToMavenLocal.dependsOn build
 publishToSonatype.dependsOn publish
+
+afterEvaluate {
+    if (project.plugins.hasPlugin('com.android.library')) {
+        tasks.withType(Sign).configureEach {
+            dependsOn('bundleReleaseAar')
+        }
+    }
+}
