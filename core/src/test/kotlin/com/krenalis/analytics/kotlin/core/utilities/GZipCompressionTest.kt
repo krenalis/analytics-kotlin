@@ -18,7 +18,6 @@ import java.util.zip.GZIPOutputStream
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GZipCompressionTest {
 
-    @Disabled
     @Test
     fun `GZIP compression roundtrip test with OkHttpURLConnection`() {
         val originalData = """
@@ -90,7 +89,6 @@ class GZipCompressionTest {
             "Compressed size: ${compressedData.size}, Original size: ${originalData.toByteArray().size}")
     }
     
-    @Disabled
     @Test
     fun `GZIP compression with empty data`() {
         val originalData = ""
@@ -122,7 +120,6 @@ class GZipCompressionTest {
         assertEquals(originalData, decompressedString)
     }
     
-    @Disabled
     @Test
     fun `GZIP compression with large data`() {
         // Create a large JSON payload
@@ -177,7 +174,6 @@ class GZipCompressionTest {
             "Compression ratio should be < 50% for large repetitive data. Actual: ${compressionRatio * 100}%")
     }
     
-    @Disabled
     @Test
     fun `Compare OkHttp GZIP with standard GZIP`() {
         val testData = """
@@ -235,7 +231,6 @@ class GZipCompressionTest {
             "Compressed sizes should be similar. OkHttp: ${okHttpCompressed.size}, Standard: ${standardCompressed.size}")
     }
     
-    @Disabled
     @Test
     fun `Verify no compression when Content-Encoding is not gzip`() {
         val testData = """{"test": "data"}"""
@@ -263,7 +258,6 @@ class GZipCompressionTest {
         assertEquals(testData, String(bodyData))
     }
     
-    @Disabled
     @Test
     fun `Test UTF-8 encoding with GZIP compression`() {
         val testData = """

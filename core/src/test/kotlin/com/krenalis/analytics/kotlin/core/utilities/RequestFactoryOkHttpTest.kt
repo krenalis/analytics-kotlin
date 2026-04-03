@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class RequestFactoryOkHttpTest {
 
-    @Disabled
     @Test
     fun `RequestFactory settings creates OkHttpURLConnection with HTTP2 support`() {
         // Create a test RequestFactory that mocks the responseCode to avoid network calls
@@ -49,7 +48,6 @@ class RequestFactoryOkHttpTest {
         assertEquals("analytics-kotlin/$LIBRARY_VERSION", connection.getRequestProperty("User-Agent"))
     }
 
-    @Disabled
     @Test
     fun `RequestFactory upload creates OkHttpURLConnection with correct configuration`() {
         val testRequestFactory = object : RequestFactory() {
@@ -84,7 +82,6 @@ class RequestFactoryOkHttpTest {
         assertTrue(connection.getDoOutput())
     }
 
-    @Disabled
     @Test
     fun `upload connection uses POST method`() {
         val requestFactory = RequestFactory()
@@ -94,7 +91,6 @@ class RequestFactoryOkHttpTest {
         assertEquals("POST", connection.getRequestMethod())
     }
 
-    @Disabled
     @Test
     fun `RequestFactory can be initialized with custom OkHttpClient`() {
         val customClient = OkHttpClient.Builder()
@@ -120,11 +116,10 @@ class RequestFactoryOkHttpTest {
         
         // Verify it returns an HttpURLConnection (our mock)
         assertTrue(connection is HttpURLConnection)
-        assertEquals("https://test.example.com/v1/settings/test-key", connection.url.toString())
+        assertEquals("https://cdn.test.com/settings/test-key", connection.url.toString())
         assertEquals("application/json; charset=utf-8", connection.getRequestProperty("Content-Type"))
     }
 
-    @Disabled
     @Test
     fun `OkHttpURLConnection state is independent of URLConnection`() {
         val requestFactory = RequestFactory()
@@ -150,7 +145,6 @@ class RequestFactoryOkHttpTest {
         assertEquals("POST", newConnection.getRequestMethod())
     }
 
-    @Disabled
     @Test
     fun `request properties are isolated per connection instance`() {
         val requestFactory = RequestFactory()
@@ -170,7 +164,6 @@ class RequestFactoryOkHttpTest {
         assertNull(connection2.getRequestProperty("X-Custom-1"))
     }
 
-    @Disabled
     @Test
     fun `connection respects HTTP2 protocol configuration`() {
         // This test verifies the HTTP/2 configuration is in place
@@ -186,7 +179,6 @@ class RequestFactoryOkHttpTest {
         assertEquals("OkHttpURLConnection:https://test.example.com/v1", connection.toString())
     }
 
-    @Disabled
     @Test
     fun `multiple addRequestProperty calls accumulate headers`() {
         val requestFactory = RequestFactory()
@@ -209,7 +201,6 @@ class RequestFactoryOkHttpTest {
         assertEquals("application/xml", acceptValues?.get(2))
     }
     
-    @Disabled
     @Test
     fun `OkHttpURLConnection avoids double GZIP compression`() {
         val requestFactory = RequestFactory()

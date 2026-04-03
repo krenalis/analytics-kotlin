@@ -32,7 +32,6 @@ class OkHttpURLConnectionTest {
         connection = OkHttpURLConnection(testUrl, mockClient)
     }
 
-    @Disabled
     @Test
     fun `constructor initializes with correct URL and client`() {
         assertEquals(testUrl, connection.url)
@@ -42,7 +41,6 @@ class OkHttpURLConnectionTest {
         assertFalse(connection.getDoOutput())
     }
 
-    @Disabled
     @Test
     fun `setRequestProperty stores properties in internal map`() {
         connection.setRequestProperty("Content-Type", "application/json")
@@ -57,7 +55,6 @@ class OkHttpURLConnectionTest {
         assertEquals(listOf("Bearer token"), properties["Authorization"])
     }
 
-    @Disabled
     @Test
     fun `addRequestProperty appends to existing properties`() {
         connection.setRequestProperty("Accept", "application/json")
@@ -72,7 +69,6 @@ class OkHttpURLConnectionTest {
         assertEquals("application/json", connection.getRequestProperty("Accept"))
     }
 
-    @Disabled
     @Test
     fun `setRequestMethod updates internal method state`() {
         connection.setRequestMethod("POST")
@@ -82,7 +78,6 @@ class OkHttpURLConnectionTest {
         assertEquals("PUT", connection.getRequestMethod())
     }
 
-    @Disabled
     @Test
     fun `setRequestMethod throws exception when connected`() {
         // Mock successful connection
@@ -94,7 +89,6 @@ class OkHttpURLConnectionTest {
         }
     }
 
-    @Disabled
     @Test
     fun `doInput and doOutput setters work correctly`() {
         connection.setDoInput(false)
@@ -104,7 +98,6 @@ class OkHttpURLConnectionTest {
         assertTrue(connection.getDoOutput())
     }
 
-    @Disabled
     @Test
     fun `timeout setters work correctly`() {
         connection.setConnectTimeout(5000)
@@ -114,7 +107,6 @@ class OkHttpURLConnectionTest {
         assertEquals(10000, connection.getReadTimeout())
     }
 
-    @Disabled
     @Test
     fun `connect makes OkHttp call with correct request`() {
         connection.setRequestProperty("Content-Type", "application/json")
@@ -131,7 +123,6 @@ class OkHttpURLConnectionTest {
         assertEquals("OK", connection.getResponseMessage())
     }
 
-    @Disabled
     @Test
     fun `getInputStream returns response body stream`() {
         val responseBody = "test response".toResponseBody("text/plain".toMediaType())
@@ -145,7 +136,6 @@ class OkHttpURLConnectionTest {
         assertEquals("test response", content)
     }
 
-    @Disabled
     @Test
     fun `getErrorStream returns null for successful response`() {
         setupMockResponse(200, "OK")
@@ -156,7 +146,6 @@ class OkHttpURLConnectionTest {
         assertNull(errorStream)
     }
 
-    @Disabled
     @Test
     fun `getErrorStream returns body stream for error response`() {
         val errorBody = "error response".toResponseBody("text/plain".toMediaType())
@@ -170,7 +159,6 @@ class OkHttpURLConnectionTest {
         assertEquals("error response", content)
     }
 
-    @Disabled
     @Test
     fun `getHeaderField returns response headers`() {
         setupMockResponse(200, "OK", headers = Headers.Builder()
@@ -185,7 +173,6 @@ class OkHttpURLConnectionTest {
         assertNull(connection.getHeaderField("Non-Existent"))
     }
 
-    @Disabled
     @Test
     fun `getHeaderFields returns all response headers`() {
         val headers = Headers.Builder()
@@ -212,7 +199,6 @@ class OkHttpURLConnectionTest {
         assertEquals("no-store", headerFields["Cache-Control"]?.get(1))
     }
 
-    @Disabled
     @Test
     fun `getContentType returns content type header`() {
         setupMockResponse(200, "OK", headers = Headers.Builder()
@@ -224,7 +210,6 @@ class OkHttpURLConnectionTest {
         assertEquals("application/json; charset=utf-8", connection.getContentType())
     }
 
-    @Disabled
     @Test
     fun `getContentLength returns content length`() {
         setupMockResponse(200, "OK", headers = Headers.Builder()
@@ -237,7 +222,6 @@ class OkHttpURLConnectionTest {
         assertEquals(1024L, connection.getContentLengthLong())
     }
 
-    @Disabled
     @Test
     fun `getContent returns appropriate object based on content type`() {
         // Test JSON content
@@ -251,7 +235,6 @@ class OkHttpURLConnectionTest {
         assertEquals("""{"key": "value"}""", content)
     }
 
-    @Disabled
     @Test
     fun `getContent with classes returns requested type`() {
         val textBody = "hello world".toResponseBody("text/plain".toMediaType())
@@ -265,7 +248,6 @@ class OkHttpURLConnectionTest {
         assertEquals("hello world", stringContent)
     }
 
-    @Disabled
     @Test
     fun `getContent with classes returns ByteArray type`() {
         val textBody = "hello world".toResponseBody("text/plain".toMediaType())
@@ -279,7 +261,6 @@ class OkHttpURLConnectionTest {
         assertEquals("hello world", String(byteContent as ByteArray))
     }
 
-    @Disabled
     @Test
     fun `disconnect closes response`() {
         setupMockResponse(200, "OK")
@@ -290,13 +271,11 @@ class OkHttpURLConnectionTest {
         verify { mockResponse.close() }
     }
 
-    @Disabled
     @Test
     fun `usingProxy returns false`() {
         assertFalse(connection.usingProxy())
     }
 
-    @Disabled
     @Test
     fun `toString returns meaningful description`() {
         val toString = connection.toString()
@@ -304,7 +283,6 @@ class OkHttpURLConnectionTest {
         assertTrue(toString.contains(testUrl.toString()))
     }
 
-    @Disabled
     @Test
     fun `no super calls to URLConnection state`() {
         // Test that our implementation doesn't depend on URLConnection state
@@ -318,7 +296,6 @@ class OkHttpURLConnectionTest {
         assertEquals("POST", connection.getRequestMethod())
     }
 
-    @Disabled
     @Test
     fun `HTTP 2 protocol is configured in client`() {
         // Verify the client was configured with HTTP/2
@@ -333,7 +310,6 @@ class OkHttpURLConnectionTest {
         assertNotNull(testConnection)
     }
 
-    @Disabled
     @Test
     fun `request properties are used in OkHttp request`() {
         connection.setRequestProperty("User-Agent", "analytics-kotlin/$LIBRARY_VERSION")
